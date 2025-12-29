@@ -1,4 +1,3 @@
-import { TaskComments } from './TaskComments/TaskComments.vo';
 import { TaskOwners } from './TaskOwners/TaskOwners.vo';
 
 enum TaskStatus {
@@ -13,14 +12,13 @@ type TaskProps = {
   readonly projectId: string;
   title: string;
   status: TaskStatus;
-  readonly owners: TaskOwners[];
-  readonly comments: TaskComments[];
+  owners: TaskOwners[];
 };
 
 type CreateTaskProps = {
   projectId: string;
   title: string;
-  owners: TaskOwners[];
+  owners: Array<{ username: string; email: string }>;
 };
 
 export class Task {
@@ -28,11 +26,12 @@ export class Task {
 
   static create(data: CreateTaskProps) {
     const id = crypto.randomUUID();
+    const owners = TaskOwners.create(data.owners);
     return new Task({
-      id: id as string,
-      status: TaskStatus.PENDING,
-      comments: [],
       ...data,
+      id,
+      status: TaskStatus.PENDING,
+      owners,
     });
   }
 
@@ -40,10 +39,7 @@ export class Task {
     return new Task(values);
   }
 
-  addComment(value: TaskComments) {
-    if (this.taskProps.status === TaskStatus.COMPLETED) {
-      throw new Error('Cannot comment on completed task');
-    }
-    this.taskProps.comments.push(value);
+  addOwner(owners: Array<{ username: string; email: string }>) {
+    this.taskProps.owners.push(...TaskOwners.create(owners));
   }
 }
