@@ -1,24 +1,23 @@
-import { TaskOwners } from './TaskOwners/TaskOwners.vo';
-
 enum TaskStatus {
   PENDING = 'PENDING',
   IN_PROGRESS = 'IN_PROGRESS',
-  UNDER_REVIEW = 'UNDER_REVIEW',
   COMPLETED = 'COMPLETED',
 }
 
 type TaskProps = {
   readonly id: string;
-  readonly projectId: string;
+  readonly listId: string;
   title: string;
+  description?: string;
   status: TaskStatus;
-  owners: TaskOwners[];
+  createdAt: Date;
+  updatedAt?: Date;
 };
 
 type CreateTaskProps = {
-  projectId: string;
+  listId: string;
   title: string;
-  owners: Array<{ username: string; email: string }>;
+  description: string;
 };
 
 export class Task {
@@ -26,12 +25,18 @@ export class Task {
 
   static create(data: CreateTaskProps) {
     const id = crypto.randomUUID();
-    const owners = TaskOwners.create(data.owners);
+    if (!data.title || data.title.trim() === '') {
+      throw new Error('Title is required');
+    }
+    if (!data.listId) {
+      throw new Error('List ID is required');
+    }
+    const createdAt = new Date();
     return new Task({
       ...data,
       id,
       status: TaskStatus.PENDING,
-      owners,
+      createdAt,
     });
   }
 
@@ -39,7 +44,8 @@ export class Task {
     return new Task(values);
   }
 
-  addOwner(owners: Array<{ username: string; email: string }>) {
-    this.taskProps.owners.push(...TaskOwners.create(owners));
+  changeStatus(newStatus: TaskStatus) {
+    this.taskProps.status = newStatus;
+    this.taskProps.updatedAt = new Date();
   }
 }
