@@ -46,4 +46,8 @@ export class User {
 	public get Name(): string {
 		return this.userProps.name;
 	}
+
+	public get Email(): string {
+		return this.userProps.email.getValue();
+	}
 }

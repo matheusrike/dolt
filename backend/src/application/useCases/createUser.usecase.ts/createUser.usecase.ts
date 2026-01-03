@@ -1,5 +1,5 @@
 import { PasswordHasher } from '@/domain/User/ports/passwordHasher';
-import { UserRepository } from '@/repositories/User.repository';
+import { UserRepository } from '@domain/repositories/User.repository';
 import { CreateUserDTO } from './createUser.dto';
 import { User } from '@/domain/User/entities/user.entity';
 import { Password } from '@/domain/User/values-objects/passwordHash.vo';
