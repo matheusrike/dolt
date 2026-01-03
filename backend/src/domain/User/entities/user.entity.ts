@@ -38,4 +38,12 @@ export class User {
 	public changeActive(newActivationStatus: boolean): void {
 		this.userProps.isActive = newActivationStatus;
 	}
+
+	public get Id(): string {
+		return this.userProps.id;
+	}
+
+	public get Name(): string {
+		return this.userProps.name;
+	}
 }
