@@ -23,7 +23,7 @@ type CreateTaskProps = {
 export class Task {
 	private constructor(private taskProps: TaskProps) {}
 
-	static create(data: CreateTaskProps) {
+	static create(data: CreateTaskProps): Task {
 		const id = crypto.randomUUID();
 		if (!data.title || data.title.trim() === '') {
 			throw new Error('Title is required');
@@ -31,20 +31,19 @@ export class Task {
 		if (!data.listId) {
 			throw new Error('List ID is required');
 		}
-		const createdAt = new Date();
 		return new Task({
 			...data,
 			id,
 			status: TaskStatus.PENDING,
-			createdAt,
+			createdAt: new Date(),
 		});
 	}
 
-	static restore(values: TaskProps) {
+	static restore(values: TaskProps): Task {
 		return new Task(values);
 	}
 
-	changeStatus(newStatus: TaskStatus) {
+	changeStatus(newStatus: TaskStatus): void {
 		this.taskProps.status = newStatus;
 		this.taskProps.updatedAt = new Date();
 	}

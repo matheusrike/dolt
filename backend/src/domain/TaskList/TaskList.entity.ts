@@ -9,24 +9,23 @@ type TaskListProps = {
 export class TaskList {
 	private constructor(private tasklistProps: TaskListProps) {}
 
-	static create(data: { userId: string; name: string }) {
+	static create(data: { userId: string; name: string }): TaskList {
 		const id = crypto.randomUUID();
 		if (!data.userId) {
 			throw new Error('User ID is required');
 		}
-		const createdAt = new Date();
 		return new TaskList({
 			...data,
 			id,
-			createdAt,
+			createdAt: new Date(),
 		});
 	}
 
-	static restore(values: TaskListProps) {
+	static restore(values: TaskListProps): TaskList {
 		return new TaskList(values);
 	}
 
-	changeName(newName: string) {
+	changeName(newName: string): void {
 		this.tasklistProps.name = newName;
 		this.tasklistProps.updatedAt = new Date();
 	}
