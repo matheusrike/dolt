@@ -1,0 +1,41 @@
+import { Email } from '../values-objects/email.vo';
+import { Password } from '../values-objects/passwordHash.vo';
+
+export interface UserProps {
+	readonly id: string;
+	name: string;
+	email: Email;
+	passwordHash: Password;
+	isActive: boolean;
+}
+
+export interface CreateUserProps {
+	name: string;
+	email: Email;
+	passwordHash: Password;
+}
+
+export class User {
+	private constructor(private userProps: UserProps) {}
+
+	static create(props: CreateUserProps): User {
+		const id = crypto.randomUUID();
+		return new User({ ...props, id, isActive: true });
+	}
+
+	static restore(values: UserProps): User {
+		return new User(values);
+	}
+
+	public changePassword(newPassword: Password): void {
+		this.userProps.passwordHash = newPassword;
+	}
+
+	public changeEmail(newEmail: Email): void {
+		this.userProps.email = newEmail;
+	}
+
+	public changeActive(newActivationStatus: boolean): void {
+		this.userProps.isActive = newActivationStatus;
+	}
+}
