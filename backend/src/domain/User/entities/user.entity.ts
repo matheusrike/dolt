@@ -50,4 +50,12 @@ export class User {
 	public get Email(): string {
 		return this.userProps.email.getValue();
 	}
+
+	public get PasswordHash(): string {
+		return this.userProps.passwordHash.getHash();
+	}
+
+	public get isActive(): boolean {
+		return this.userProps.isActive;
+	}
 }

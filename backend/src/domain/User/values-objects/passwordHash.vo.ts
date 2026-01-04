@@ -13,6 +13,10 @@ export class Password {
 		return new Password(hashed);
 	}
 
+	public static fromHash(hashed: string) {
+		return new Password(hashed);
+	}
+
 	public getHash() {
 		return this.hashed;
 	}
