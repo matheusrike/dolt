@@ -5,3 +5,7 @@ export interface PasswordHasher {
 		passwordHashed: string,
 	): Promise<boolean> | boolean;
 }
+
+export const PASSWORD_HASHER = Symbol('PasswordHasher');
+
+export const PasswordHasherToken = () => PASSWORD_HASHER;

@@ -22,4 +22,8 @@ export class InMemoryUserRepository implements UserRepository {
 		}
 		throw new Error('User not found');
 	}
+
+	list(): Promise<User[]> | User[] {
+		return Array.from(this.usersList.values());
+	}
 }

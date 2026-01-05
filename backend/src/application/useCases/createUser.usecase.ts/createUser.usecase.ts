@@ -20,9 +20,9 @@ export class CreateUserUseCase {
 		);
 		const email = Email.create(input.email);
 
-		if (await this.userRepository.findByEmail(email)) {
-			throw new Error('User already exists');
-		}
+		// if (await this.userRepository.findByEmail(email)) {
+		// 	throw new Error('User already exists');
+		// }
 
 		const newUser = User.create({
 			name: input.name,

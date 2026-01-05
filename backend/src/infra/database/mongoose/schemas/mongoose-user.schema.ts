@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, HydratedDocument } from 'mongoose';
 
 @Schema({ collection: 'User', timestamps: true })
 export class UserSchema extends Document {
@@ -19,14 +19,5 @@ export class UserSchema extends Document {
 	isActive: boolean;
 }
 
+export type UserDocument = HydratedDocument<UserSchema>;
 export const UserSchemaFactory = SchemaFactory.createForClass(UserSchema);
-// const UserSchema = new Schema(
-// 	{
-// 		_id: { type: String, required: true },
-// 		name: { type: String, required: true },
-// 		email: { type: String, required: true, unique: true },
-// 		passwordHash: { type: String, required: true },
-// 		isActive: { type: Boolean, default: true },
-// 	},
-// 	{ versionKey: false },
-// );

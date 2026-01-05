@@ -1,6 +1,8 @@
 import bcrypt from 'bcryptjs';
 import { PasswordHasher } from '@domain/User/ports/passwordHasher';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class BcryptPasswordHasher implements PasswordHasher {
 	private readonly saltRounds = 12;
 

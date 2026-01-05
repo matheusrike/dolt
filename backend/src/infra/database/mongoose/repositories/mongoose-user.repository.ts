@@ -3,12 +3,15 @@ import { User } from '@/domain/User/entities/user.entity';
 import { Email } from '@/domain/User/values-objects/email.vo';
 import { Model } from 'mongoose';
 import { MongooseUserMapper } from '../mapper/User.mapper';
-import { Inject } from '@nestjs/common';
-import { UserSchema } from '../schemas/mongoose-user.schema';
+import { Injectable } from '@nestjs/common';
+import { UserDocument, UserSchema } from '../schemas/mongoose-user.schema';
+import { InjectModel } from '@nestjs/mongoose';
 
+@Injectable()
 export class MongooseUserRepositoy implements UserRepository {
 	constructor(
-		@Inject(UserSchema.name) private readonly userModel: Model<User>,
+		@InjectModel(UserSchema.name)
+		private readonly userModel: Model<UserDocument>,
 	) {}
 	async save(user: User): Promise<void> {
 		const userDocument = MongooseUserMapper.toPersistence(user);
@@ -29,5 +32,10 @@ export class MongooseUserRepositoy implements UserRepository {
 			.lean<UserSchema | null>();
 		if (!user) throw new Error('User not found');
 		return MongooseUserMapper.toDomain(user);
+	}
+
+	async list(): Promise<User[]> {
+		const users = await this.userModel.find().lean<UserSchema[]>();
+		return users.map((user) => MongooseUserMapper.toDomain(user));
 	}
 }
