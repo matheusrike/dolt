@@ -1,7 +1,9 @@
-import type { CreateUserDTO } from '@/application/useCases/createUser.usecase.ts/createUser.dto';
+import type { CreateUserInput } from '@/application/useCases/createUser.usecase.ts/createUser.dto';
 import { CreateUserUseCase } from '@/application/useCases/createUser.usecase.ts/createUser.usecase';
 import { ListUsersUseCase } from '@/application/useCases/listUsers.usecase.ts/listUsers.usecase';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { ZodValidationPipe } from '@/infra/pipes/zod-validation.pipe';
+import { Body, Controller, Get, Post, UsePipes } from '@nestjs/common';
+import { CreateUserSchema } from './user.schema';
 
 @Controller('users')
 export class UserController {
@@ -10,8 +12,9 @@ export class UserController {
 		private listUsersUseCase: ListUsersUseCase,
 	) {}
 	@Post()
-	async handle(@Body() Body: CreateUserDTO) {
-		await this.createUserUseCase.execute(Body);
+	@UsePipes(new ZodValidationPipe(CreateUserSchema))
+	async handle(@Body() Body: CreateUserInput) {
+		return await this.createUserUseCase.execute(Body);
 	}
 
 	@Get()

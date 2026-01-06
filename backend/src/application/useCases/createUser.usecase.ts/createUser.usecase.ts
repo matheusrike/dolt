@@ -1,6 +1,6 @@
 import { PasswordHasher } from '@/domain/User/ports/passwordHasher';
 import { UserRepository } from '@domain/repositories/User.repository';
-import { CreateUserDTO } from './createUser.dto';
+import { CreateUserInput } from './createUser.dto';
 import { User } from '@/domain/User/entities/user.entity';
 import { Password } from '@/domain/User/values-objects/passwordHash.vo';
 import { Email } from '@/domain/User/values-objects/email.vo';
@@ -12,7 +12,7 @@ export class CreateUserUseCase {
 	) {}
 
 	async execute(
-		input: CreateUserDTO,
+		input: CreateUserInput,
 	): Promise<{ userId: string; userName: string }> {
 		const passwordHash = await Password.create(
 			input.password,
@@ -20,9 +20,9 @@ export class CreateUserUseCase {
 		);
 		const email = Email.create(input.email);
 
-		// if (await this.userRepository.findByEmail(email)) {
-		// 	throw new Error('User already exists');
-		// }
+		if (await this.userRepository.findByEmail(email)) {
+			throw new Error('User already exists');
+		}
 
 		const newUser = User.create({
 			name: input.name,

@@ -18,15 +18,15 @@ export class MongooseUserRepositoy implements UserRepository {
 		await this.userModel.create(userDocument);
 	}
 
-	async findByEmail(email: Email): Promise<User> {
+	async findByEmail(email: Email): Promise<User | null> {
 		const user = await this.userModel
 			.findOne({ email: email.getValue() })
 			.lean<UserSchema | null>();
-		if (!user) throw new Error('User not found');
+		if (!user) return null;
 		return MongooseUserMapper.toDomain(user);
 	}
 
-	async findById(id: string): Promise<User> {
+	async findById(id: string): Promise<User | null> {
 		const user = await this.userModel
 			.findOne({ id })
 			.lean<UserSchema | null>();
@@ -34,7 +34,7 @@ export class MongooseUserRepositoy implements UserRepository {
 		return MongooseUserMapper.toDomain(user);
 	}
 
-	async list(): Promise<User[]> {
+	async list(): Promise<(User | null)[]> {
 		const users = await this.userModel.find().lean<UserSchema[]>();
 		return users.map((user) => MongooseUserMapper.toDomain(user));
 	}

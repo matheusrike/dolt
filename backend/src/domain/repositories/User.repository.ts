@@ -3,9 +3,9 @@ import { Email } from '../User/values-objects/email.vo';
 
 export interface UserRepository {
 	save(user: User): Promise<void> | void;
-	findByEmail(email: Email): Promise<User> | User;
-	findById(id: string): Promise<User> | User;
-	list(): Promise<User[]> | User[];
+	findByEmail(email: Email): Promise<User | null> | User | null;
+	findById(id: string): Promise<User | null> | User | null;
+	list(): Promise<(User | null)[]> | User[];
 }
 
 export const USER_REPOSITORY = Symbol('UserRepository');

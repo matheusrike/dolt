@@ -23,7 +23,7 @@ export class User {
 		return new User({ ...props, id, isActive: true });
 	}
 
-	static restore(values: UserProps): User {
+	static restore(values: UserProps): User | null {
 		return new User(values);
 	}
 

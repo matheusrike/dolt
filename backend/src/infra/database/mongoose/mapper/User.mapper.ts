@@ -15,7 +15,7 @@ export class MongooseUserMapper {
 		};
 	}
 
-	static toDomain(raw: UserSchema): User {
+	static toDomain(raw: UserSchema): User | null {
 		return User.restore({
 			id: raw.id,
 			name: raw.name,
