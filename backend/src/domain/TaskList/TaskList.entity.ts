@@ -14,6 +14,9 @@ export class TaskList {
 		if (!data.userId) {
 			throw new Error('User ID is required');
 		}
+		if (!data.name || data.name.trim() === '') {
+			throw new Error('Name should not be empty');
+		}
 		return new TaskList({
 			...data,
 			id,

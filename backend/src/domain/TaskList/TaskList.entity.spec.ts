@@ -1,0 +1,33 @@
+import { TaskList } from './TaskList.entity';
+
+describe('TaskList entity ', () => {
+	const validData = {
+		userId: crypto.randomUUID(),
+		name: 'Example name',
+	};
+
+	it('should create a TaskList: ', () => {
+		const taskList = TaskList.create(validData);
+
+		expect(taskList).toBeDefined();
+	});
+
+	it('should not create a Tasklist without name: ', () => {
+		expect(() => TaskList.create({ ...validData, name: '' })).toThrow(
+			Error,
+		);
+	});
+
+	it('should not create a TaskList without the userId: ', () => {
+		expect(() => TaskList.create({ ...validData, userId: '' })).toThrow(
+			Error,
+		);
+	});
+
+	it('should change the TaskList name: ', () => {
+		const taskList = TaskList.create(validData);
+		taskList.changeName('New name example');
+
+		expect(taskList).toBeDefined();
+	});
+});
