@@ -1,4 +1,4 @@
-enum TaskStatus {
+export enum TaskStatus {
 	PENDING = 'PENDING',
 	IN_PROGRESS = 'IN_PROGRESS',
 	COMPLETED = 'COMPLETED',
@@ -41,6 +41,19 @@ export class Task {
 
 	static restore(values: TaskProps): Task {
 		return new Task(values);
+	}
+
+	updateTitle(newTitle: string) {
+		if (!newTitle || newTitle.trim() === '') {
+			throw new Error('The new title cannot be null');
+		}
+		this.taskProps.title = newTitle;
+		this.taskProps.updatedAt = new Date();
+	}
+
+	updateDescription(newDescription: string) {
+		this.taskProps.description = newDescription;
+		this.taskProps.updatedAt = new Date();
 	}
 
 	changeStatus(newStatus: TaskStatus): void {
