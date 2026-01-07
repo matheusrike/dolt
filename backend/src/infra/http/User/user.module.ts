@@ -1,4 +1,4 @@
-import { CreateUserUseCase } from '@/application/useCases/createUser/createUser.usecase';
+import { CreateUserUseCase } from '@/application/useCases/User/createUser/createUser.usecase';
 import {
 	USER_REPOSITORY,
 	UserRepository,
@@ -11,8 +11,8 @@ import { MongooseUserModule } from '@/infra/database/mongoose/modules/mongoose-u
 import { Module } from '@nestjs/common';
 import { UserController } from './user.controller';
 import { BcryptModule } from '@/infra/services/bcrypt.module';
-import { ListUsersUseCase } from '@/application/useCases/listUsers/listUsers.usecase';
-import { FindUserByIdUseCase } from '@/application/useCases/findUserById/findUserById.usecase';
+import { ListUsersUseCase } from '@/application/useCases/User/listUsers/listUsers.usecase';
+import { FindUserByIdUseCase } from '@/application/useCases/User/findUserById/findUserById.usecase';
 
 @Module({
 	imports: [MongooseUserModule, BcryptModule],

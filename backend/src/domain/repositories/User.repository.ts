@@ -5,7 +5,7 @@ export interface UserRepository {
 	save(user: User): Promise<void> | void;
 	findByEmail(email: Email): Promise<User | null> | User | null;
 	findById(id: string): Promise<User | null> | User | null;
-	list(): Promise<(User | null)[]> | User[];
+	list(): Promise<(User | null)[]> | (User | null)[];
 }
 
 export const USER_REPOSITORY = Symbol('UserRepository');

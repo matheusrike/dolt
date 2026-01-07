@@ -32,4 +32,16 @@ export class TaskList {
 		this.tasklistProps.name = newName;
 		this.tasklistProps.updatedAt = new Date();
 	}
+
+	get Id(): string {
+		return this.tasklistProps.id;
+	}
+
+	get Name(): string {
+		return this.tasklistProps.name;
+	}
+
+	get CreateAt(): Date {
+		return this.tasklistProps.createdAt;
+	}
 }

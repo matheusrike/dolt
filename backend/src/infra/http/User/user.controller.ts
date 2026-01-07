@@ -1,11 +1,11 @@
-import type { CreateUserInput } from '@/application/useCases/createUser/createUser.dto';
-import { CreateUserUseCase } from '@/application/useCases/createUser/createUser.usecase';
-import { ListUsersUseCase } from '@/application/useCases/listUsers/listUsers.usecase';
+import type { CreateUserInput } from '@/application/useCases/User/createUser/createUser.dto';
+import { CreateUserUseCase } from '@/application/useCases/User/createUser/createUser.usecase';
+import { ListUsersUseCase } from '@/application/useCases/User/listUsers/listUsers.usecase';
 import { ZodValidationPipe } from '@/infra/pipes/zod-validation.pipe';
 import { Body, Controller, Get, Param, Post, UsePipes } from '@nestjs/common';
 import { CreateUserSchema, FindByIdSchema } from './user.schema';
-import { FindUserByIdInput } from '@/application/useCases/findUserById/findUserById.dto';
-import { FindUserByIdUseCase } from '@/application/useCases/findUserById/findUserById.usecase';
+import { FindUserByIdInput } from '@/application/useCases/User/findUserById/findUserById.dto';
+import { FindUserByIdUseCase } from '@/application/useCases/User/findUserById/findUserById.usecase';
 
 @Controller('users')
 export class UserController {
