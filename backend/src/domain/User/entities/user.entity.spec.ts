@@ -50,4 +50,17 @@ describe('User Entity', () => {
 
 		expect(user).toBeDefined();
 	});
+
+	it('should not create an user without name', async () => {
+		const email = Email.create('user@email.com');
+		const password = await Password.create('Hash@123', hasher);
+
+		expect(() =>
+			User.create({
+				name: '',
+				email,
+				passwordHash: password,
+			}),
+		).toThrow(Error);
+	});
 });

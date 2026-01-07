@@ -20,6 +20,9 @@ export class User {
 
 	static create(props: CreateUserProps): User {
 		const id = crypto.randomUUID();
+		if (!props.name || props.name.trim().length === 0) {
+			throw new Error('Name property cannot be null');
+		}
 		return new User({ ...props, id, isActive: true });
 	}
 
