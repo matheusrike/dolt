@@ -17,7 +17,7 @@ export class MongooseUserMapper {
 
 	static toDomain(raw: UserSchema): User | null {
 		return User.restore({
-			id: raw.id,
+			id: raw._id,
 			name: raw.name,
 			email: Email.create(raw.email),
 			passwordHash: Password.fromHash(raw.passwordHash),
