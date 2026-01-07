@@ -5,3 +5,7 @@ export const CreateUserSchema = z.object({
 	email: z.email('Invalid e-mail'),
 	password: z.string(),
 });
+
+export const FindByIdSchema = z.object({
+	id: z.uuid(),
+});

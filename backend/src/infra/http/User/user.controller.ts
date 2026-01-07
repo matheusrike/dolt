@@ -1,15 +1,18 @@
-import type { CreateUserInput } from '@/application/useCases/createUser.usecase.ts/createUser.dto';
-import { CreateUserUseCase } from '@/application/useCases/createUser.usecase.ts/createUser.usecase';
-import { ListUsersUseCase } from '@/application/useCases/listUsers.usecase.ts/listUsers.usecase';
+import type { CreateUserInput } from '@/application/useCases/createUser/createUser.dto';
+import { CreateUserUseCase } from '@/application/useCases/createUser/createUser.usecase';
+import { ListUsersUseCase } from '@/application/useCases/listUsers/listUsers.usecase';
 import { ZodValidationPipe } from '@/infra/pipes/zod-validation.pipe';
-import { Body, Controller, Get, Post, UsePipes } from '@nestjs/common';
-import { CreateUserSchema } from './user.schema';
+import { Body, Controller, Get, Param, Post, UsePipes } from '@nestjs/common';
+import { CreateUserSchema, FindByIdSchema } from './user.schema';
+import { FindUserByIdInput } from '@/application/useCases/findUserById/findUserById.dto';
+import { FindUserByIdUseCase } from '@/application/useCases/findUserById/findUserById.usecase';
 
 @Controller('users')
 export class UserController {
 	constructor(
 		private createUserUseCase: CreateUserUseCase,
 		private listUsersUseCase: ListUsersUseCase,
+		private finduserById: FindUserByIdUseCase,
 	) {}
 	@Post()
 	@UsePipes(new ZodValidationPipe(CreateUserSchema))
@@ -20,5 +23,11 @@ export class UserController {
 	@Get()
 	async list() {
 		return await this.listUsersUseCase.execute();
+	}
+
+	@Get(':id')
+	@UsePipes(new ZodValidationPipe(FindByIdSchema))
+	async getById(@Param() Param: FindUserByIdInput) {
+		return await this.finduserById.execute(Param);
 	}
 }
