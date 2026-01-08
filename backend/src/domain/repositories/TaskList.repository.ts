@@ -1,4 +1,3 @@
-import { symbol } from 'zod';
 import { TaskList } from '../TaskList/TaskList.entity';
 
 export interface TaskListRepository {
@@ -9,6 +8,6 @@ export interface TaskListRepository {
 	): Promise<(TaskList | null)[]> | (TaskList | null)[];
 }
 
-export const TASKLIST_REPOSITORY = symbol('TaskListRepository');
+export const TASKLIST_REPOSITORY = Symbol('TaskListRepository');
 
 export const TaskListRepositoryToken = () => TASKLIST_REPOSITORY;

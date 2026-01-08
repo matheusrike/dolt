@@ -26,7 +26,7 @@ export class CreateTaskListUseCase {
 		return {
 			id: newTaskList.Id,
 			name: newTaskList.Name,
-			createdAt: newTaskList.CreateAt,
+			createdAt: newTaskList.CreatedAt,
 		};
 	}
 }

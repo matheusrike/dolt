@@ -24,7 +24,7 @@ export class TaskList {
 		});
 	}
 
-	static restore(values: TaskListProps): TaskList {
+	static restore(values: TaskListProps): TaskList | null {
 		return new TaskList(values);
 	}
 
@@ -37,11 +37,19 @@ export class TaskList {
 		return this.tasklistProps.id;
 	}
 
+	get UserId(): string {
+		return this.tasklistProps.userId;
+	}
+
 	get Name(): string {
 		return this.tasklistProps.name;
 	}
 
-	get CreateAt(): Date {
+	get CreatedAt(): Date {
 		return this.tasklistProps.createdAt;
+	}
+
+	get UpdatedAt(): Date | undefined {
+		return this.tasklistProps.updatedAt;
 	}
 }
