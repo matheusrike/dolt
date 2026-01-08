@@ -1,6 +1,6 @@
-export class FindUserByIdInput {
+export type FindUserByIdInput = {
 	id: string;
-}
+};
 
 export class FindUserByIdOutput {
 	name: string;

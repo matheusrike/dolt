@@ -5,7 +5,7 @@ import {
 	CreateTaskListSchema,
 	FindTaskListByIdSchema,
 } from './tasklist.schema';
-import {
+import type {
 	CreateTaskListInput,
 	CreateTaskListOutput,
 } from '@/application/useCases/TaskList/createTaskList/createTaskList.dto';

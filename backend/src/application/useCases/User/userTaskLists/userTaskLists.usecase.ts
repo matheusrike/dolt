@@ -9,7 +9,6 @@ export class UserTaskListsUsecase {
 	) {}
 
 	async execute(userId: string): Promise<UserTaskListsOutput[]> {
-		console.log(userId);
 		const user = await this.userRepository.findById(userId);
 		if (!user) throw new Error('User with this ID not found');
 

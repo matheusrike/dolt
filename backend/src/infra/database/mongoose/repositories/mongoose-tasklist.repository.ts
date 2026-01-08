@@ -7,7 +7,7 @@ import {
 	TaskListSchema,
 } from '../schemas/mongoose-tasklist.schema';
 import { Model } from 'mongoose';
-import { MongooseTaskListMapper } from '../mapper/TaskList.mapper';
+import { MongooseTaskListMapper } from '../mapper/mongoose-tasklist.mapper';
 
 @Injectable()
 export class MongooseTaskListRepository implements TaskListRepository {

@@ -2,7 +2,7 @@ import { UserRepository } from '@/domain/repositories/User.repository';
 import { User } from '@/domain/User/entities/user.entity';
 import { Email } from '@/domain/User/values-objects/email.vo';
 import { Model } from 'mongoose';
-import { MongooseUserMapper } from '../mapper/User.mapper';
+import { MongooseUserMapper } from '../mapper/mongoose-user.mapper';
 import { Injectable } from '@nestjs/common';
 import { UserDocument, UserSchema } from '../schemas/mongoose-user.schema';
 import { InjectModel } from '@nestjs/mongoose';

@@ -1,6 +1,6 @@
 import { PasswordHasher } from '@/domain/User/ports/passwordHasher';
 import { UserRepository } from '@domain/repositories/User.repository';
-import { CreateUserInput } from './createUser.dto';
+import { CreateUserInput, CreateUserOutput } from './createUser.dto';
 import { User } from '@/domain/User/entities/user.entity';
 import { Password } from '@/domain/User/values-objects/passwordHash.vo';
 import { Email } from '@/domain/User/values-objects/email.vo';
@@ -11,9 +11,7 @@ export class CreateUserUseCase {
 		private passwordHasher: PasswordHasher,
 	) {}
 
-	async execute(
-		input: CreateUserInput,
-	): Promise<{ userId: string; userName: string }> {
+	async execute(input: CreateUserInput): Promise<CreateUserOutput> {
 		const passwordHash = await Password.create(
 			input.password,
 			this.passwordHasher,
@@ -31,6 +29,6 @@ export class CreateUserUseCase {
 		});
 
 		await this.userRepository.save(newUser);
-		return { userId: newUser.Id, userName: newUser.Name };
+		return { userId: newUser.Id, name: newUser.Name, email: newUser.Email };
 	}
 }

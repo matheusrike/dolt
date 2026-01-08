@@ -1,4 +1,7 @@
-import type { CreateUserInput } from '@/application/useCases/User/createUser/createUser.dto';
+import type {
+	CreateUserInput,
+	CreateUserOutput,
+} from '@/application/useCases/User/createUser/createUser.dto';
 import { CreateUserUseCase } from '@/application/useCases/User/createUser/createUser.usecase';
 import { ListUsersUseCase } from '@/application/useCases/User/listUsers/listUsers.usecase';
 import { ZodValidationPipe } from '@/infra/pipes/zod-validation.pipe';
@@ -8,7 +11,10 @@ import {
 	FindByIdSchema,
 	UserTaskListsSchem,
 } from './user.schema';
-import { FindUserByIdInput } from '@/application/useCases/User/findUserById/findUserById.dto';
+import type {
+	FindUserByIdInput,
+	FindUserByIdOutput,
+} from '@/application/useCases/User/findUserById/findUserById.dto';
 import { FindUserByIdUseCase } from '@/application/useCases/User/findUserById/findUserById.usecase';
 import { UserTaskListsOutput } from '@/application/useCases/User/userTaskLists/userTaskLists.dto';
 import { UserTaskListsUsecase } from '@/application/useCases/User/userTaskLists/userTaskLists.usecase';
@@ -23,7 +29,7 @@ export class UserController {
 	) {}
 	@Post()
 	@UsePipes(new ZodValidationPipe(CreateUserSchema))
-	async handle(@Body() Body: CreateUserInput) {
+	async handle(@Body() Body: CreateUserInput): Promise<CreateUserOutput> {
 		return await this.createUserUsecase.execute(Body);
 	}
 
@@ -34,7 +40,9 @@ export class UserController {
 
 	@Get(':id')
 	@UsePipes(new ZodValidationPipe(FindByIdSchema))
-	async getById(@Param() Param: FindUserByIdInput) {
+	async getById(
+		@Param() Param: FindUserByIdInput,
+	): Promise<FindUserByIdOutput> {
 		return await this.finduserByIdUsecase.execute(Param);
 	}
 
