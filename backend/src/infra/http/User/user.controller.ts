@@ -10,9 +10,9 @@ import { FindUserByIdUseCase } from '@/application/useCases/User/findUserById/fi
 @Controller('users')
 export class UserController {
 	constructor(
-		private createUserUseCase: CreateUserUseCase,
-		private listUsersUseCase: ListUsersUseCase,
-		private finduserById: FindUserByIdUseCase,
+		private readonly createUserUseCase: CreateUserUseCase,
+		private readonly listUsersUseCase: ListUsersUseCase,
+		private readonly finduserById: FindUserByIdUseCase,
 	) {}
 	@Post()
 	@UsePipes(new ZodValidationPipe(CreateUserSchema))

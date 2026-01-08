@@ -13,9 +13,9 @@ export class MongooseUserRepositoy implements UserRepository {
 		@InjectModel(UserSchema.name)
 		private readonly userModel: Model<UserDocument>,
 	) {}
-	async save(user: User): Promise<void> {
-		const userDocument = MongooseUserMapper.toPersistence(user);
-		await this.userModel.create(userDocument);
+	async save(data: User): Promise<void> {
+		const user = MongooseUserMapper.toPersistence(data);
+		await this.userModel.create(user);
 	}
 
 	async findByEmail(email: Email): Promise<User | null> {
@@ -27,9 +27,7 @@ export class MongooseUserRepositoy implements UserRepository {
 	}
 
 	async findById(id: string): Promise<User | null> {
-		const user = await this.userModel
-			.findOne({ id })
-			.lean<UserSchema | null>();
+		const user = await this.userModel.findById(id);
 		if (!user) throw new Error('User not found');
 		return MongooseUserMapper.toDomain(user);
 	}

@@ -5,9 +5,9 @@ import { UserRepository } from '@domain/repositories/User.repository';
 export class InMemoryUserRepository implements UserRepository {
 	private usersList = new Map<string, User>();
 
-	save(user: User): void {
-		const id = user.Id;
-		this.usersList.set(id, user);
+	save(data: User): void {
+		const id = data.Id;
+		this.usersList.set(id, data);
 	}
 
 	findById(id: string): Promise<User> | User {

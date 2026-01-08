@@ -7,7 +7,7 @@ import { UserSchema } from '../schemas/mongoose-user.schema';
 export class MongooseUserMapper {
 	static toPersistence(user: User) {
 		return {
-			id: user.Id,
+			_id: user.Id,
 			name: user.Name,
 			email: user.Email,
 			passwordHash: user.PasswordHash,
