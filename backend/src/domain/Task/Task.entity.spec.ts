@@ -1,8 +1,9 @@
-import { Task, TaskStatus } from './Task.entity';
+import { TaskListIdRequired, TitleRequired } from './errors/task.error';
+import { Task, TaskStatus } from './task.entity';
 
 describe('Task entity', () => {
 	const validData = {
-		listId: crypto.randomUUID(),
+		taskListId: crypto.randomUUID(),
 		title: 'Title example',
 		description: 'Description example',
 	};
@@ -24,16 +25,16 @@ describe('Task entity', () => {
 				...validData,
 				title: '',
 			}),
-		).toThrow(Error);
+		).toThrow(TitleRequired);
 	});
 
 	it('should not create an Task without the listId: ', () => {
 		expect(() =>
 			Task.create({
 				...validData,
-				listId: '',
+				taskListId: '',
 			}),
-		).toThrow(Error);
+		).toThrow(TaskListIdRequired);
 	});
 
 	it('should update the Task title: ', () => {

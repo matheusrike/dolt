@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
 export const CreateUserSchema = z.object({
-	name: z.string(),
+	name: z.string('Name cannot be null'),
 	email: z.email('Invalid e-mail'),
-	password: z.string(),
+	password: z.string('Password cannot be null'),
 });
 
 export const FindByIdSchema = z.object({

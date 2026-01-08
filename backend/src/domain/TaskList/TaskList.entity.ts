@@ -1,3 +1,5 @@
+import { InvalidTaskListName, UserIdRequired } from './errors/tasklist.error';
+
 type TaskListProps = {
 	readonly id: string;
 	readonly userId: string;
@@ -12,10 +14,10 @@ export class TaskList {
 	static create(data: { userId: string; name: string }): TaskList {
 		const id = crypto.randomUUID();
 		if (!data.userId) {
-			throw new Error('User ID is required');
+			throw new UserIdRequired('User ID is required');
 		}
 		if (!data.name || data.name.trim() === '') {
-			throw new Error('Name should not be empty');
+			throw new InvalidTaskListName('Name should not be empty');
 		}
 		return new TaskList({
 			...data,

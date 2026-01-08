@@ -5,7 +5,15 @@ import type {
 import { CreateUserUseCase } from '@/application/useCases/User/createUser/createUser.usecase';
 import { ListUsersUseCase } from '@/application/useCases/User/listUsers/listUsers.usecase';
 import { ZodValidationPipe } from '@/infra/pipes/zod-validation.pipe';
-import { Body, Controller, Get, Param, Post, UsePipes } from '@nestjs/common';
+import {
+	Body,
+	Controller,
+	Get,
+	Param,
+	Post,
+	UseFilters,
+	UsePipes,
+} from '@nestjs/common';
 import {
 	CreateUserSchema,
 	FindByIdSchema,
@@ -18,8 +26,10 @@ import type {
 import { FindUserByIdUseCase } from '@/application/useCases/User/findUserById/findUserById.usecase';
 import { UserTaskListsOutput } from '@/application/useCases/User/userTaskLists/userTaskLists.dto';
 import { UserTaskListsUsecase } from '@/application/useCases/User/userTaskLists/userTaskLists.usecase';
+import { UserExceptionFilter } from './user-exception.filter';
 
 @Controller('users')
+@UseFilters(new UserExceptionFilter())
 export class UserController {
 	constructor(
 		private readonly createUserUsecase: CreateUserUseCase,

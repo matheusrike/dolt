@@ -1,3 +1,5 @@
+import { InvalidEmail } from '../errors/user.error';
+
 export class Email {
 	private constructor(private readonly email: string) {}
 
@@ -6,7 +8,7 @@ export class Email {
 			return new Email(email.toLowerCase());
 		}
 
-		throw new Error(`Invalid e-mail`);
+		throw new InvalidEmail(`Invalid e-mail`);
 	}
 
 	private static isValid(email: string): boolean {

@@ -1,3 +1,4 @@
+import { InvalidUserName } from '../errors/user.error';
 import { Email } from '../values-objects/email.vo';
 import { Password } from '../values-objects/passwordHash.vo';
 
@@ -21,7 +22,7 @@ export class User {
 	static create(props: CreateUserProps): User {
 		const id = crypto.randomUUID();
 		if (!props.name || props.name.trim().length === 0) {
-			throw new Error('Name property cannot be null');
+			throw new InvalidUserName('Name property cannot be null');
 		}
 		return new User({ ...props, id, isActive: true });
 	}

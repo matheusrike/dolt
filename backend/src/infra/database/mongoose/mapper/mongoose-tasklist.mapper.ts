@@ -1,4 +1,4 @@
-import { TaskList } from '@/domain/TaskList/TaskList.entity';
+import { TaskList } from '@/domain/TaskList/tasklist.entity';
 import { TaskListSchema } from '../schemas/mongoose-tasklist.schema';
 
 export class MongooseTaskListMapper {
@@ -12,7 +12,10 @@ export class MongooseTaskListMapper {
 		};
 	}
 
-	static toDomain(raw: TaskListSchema): TaskList | null {
+	static toDomain(raw: TaskListSchema | null): TaskList | null {
+		if (!raw) {
+			return null;
+		}
 		return TaskList.restore({
 			id: raw._id,
 			userId: raw.userId,

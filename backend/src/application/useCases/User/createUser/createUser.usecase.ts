@@ -4,6 +4,7 @@ import { CreateUserInput, CreateUserOutput } from './createUser.dto';
 import { User } from '@/domain/User/entities/user.entity';
 import { Password } from '@/domain/User/values-objects/passwordHash.vo';
 import { Email } from '@/domain/User/values-objects/email.vo';
+import { UserAlreadyExists } from '../error/user-usecase.error';
 
 export class CreateUserUseCase {
 	constructor(
@@ -19,7 +20,7 @@ export class CreateUserUseCase {
 		const email = Email.create(input.email);
 
 		if (await this.userRepository.findByEmail(email)) {
-			throw new Error('User already exists');
+			throw new UserAlreadyExists('User already exists');
 		}
 
 		const newUser = User.create({

@@ -1,3 +1,9 @@
+import {
+	InvalidNewTaskTitle,
+	TaskListIdRequired,
+	TitleRequired,
+} from './errors/task.error';
+
 export enum TaskStatus {
 	PENDING = 'PENDING',
 	IN_PROGRESS = 'IN_PROGRESS',
@@ -6,7 +12,7 @@ export enum TaskStatus {
 
 type TaskProps = {
 	readonly id: string;
-	readonly listId: string;
+	readonly taskListId: string;
 	title: string;
 	description?: string;
 	status: TaskStatus;
@@ -15,7 +21,7 @@ type TaskProps = {
 };
 
 type CreateTaskProps = {
-	listId: string;
+	taskListId: string;
 	title: string;
 	description: string;
 };
@@ -26,10 +32,10 @@ export class Task {
 	static create(data: CreateTaskProps): Task {
 		const id = crypto.randomUUID();
 		if (!data.title || data.title.trim() === '') {
-			throw new Error('Title is required');
+			throw new TitleRequired('Title is required');
 		}
-		if (!data.listId) {
-			throw new Error('List ID is required');
+		if (!data.taskListId) {
+			throw new TaskListIdRequired('TaskList ID is required');
 		}
 		return new Task({
 			...data,
@@ -45,7 +51,7 @@ export class Task {
 
 	updateTitle(newTitle: string) {
 		if (!newTitle || newTitle.trim() === '') {
-			throw new Error('The new title cannot be null');
+			throw new InvalidNewTaskTitle('The new title cannot be null');
 		}
 		this.taskProps.title = newTitle;
 		this.taskProps.updatedAt = new Date();

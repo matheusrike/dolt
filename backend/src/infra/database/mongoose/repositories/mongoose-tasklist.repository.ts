@@ -1,5 +1,5 @@
 import { TaskListRepository } from '@/domain/repositories/TaskList.repository';
-import { TaskList } from '@/domain/TaskList/TaskList.entity';
+import { TaskList } from '@/domain/TaskList/tasklist.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import {
@@ -29,7 +29,6 @@ export class MongooseTaskListRepository implements TaskListRepository {
 
 	async findById(id: string): Promise<TaskList | null> {
 		const taskList = await this.taskListModel.findById(id);
-		if (!taskList) throw new Error('TaskList with this id not found');
 		return MongooseTaskListMapper.toDomain(taskList);
 	}
 }

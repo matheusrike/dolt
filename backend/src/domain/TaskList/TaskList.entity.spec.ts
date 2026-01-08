@@ -1,4 +1,5 @@
-import { TaskList } from './TaskList.entity';
+import { InvalidTaskListName, UserIdRequired } from './errors/tasklist.error';
+import { TaskList } from './tasklist.entity';
 
 describe('TaskList entity ', () => {
 	const validData = {
@@ -14,13 +15,13 @@ describe('TaskList entity ', () => {
 
 	it('should not create a Tasklist without name: ', () => {
 		expect(() => TaskList.create({ ...validData, name: '' })).toThrow(
-			Error,
+			InvalidTaskListName,
 		);
 	});
 
 	it('should not create a TaskList without the userId: ', () => {
 		expect(() => TaskList.create({ ...validData, userId: '' })).toThrow(
-			Error,
+			UserIdRequired,
 		);
 	});
 

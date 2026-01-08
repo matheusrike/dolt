@@ -1,4 +1,5 @@
 import { FakePasswordHasher } from '../../__tests__/fakes/fake-password-hasher';
+import { InvalidUserName } from '../errors/user.error';
 import { Email } from '../values-objects/email.vo';
 import { Password } from '../values-objects/passwordHash.vo';
 import { User } from './user.entity';
@@ -61,6 +62,6 @@ describe('User Entity', () => {
 				email,
 				passwordHash: password,
 			}),
-		).toThrow(Error);
+		).toThrow(InvalidUserName);
 	});
 });

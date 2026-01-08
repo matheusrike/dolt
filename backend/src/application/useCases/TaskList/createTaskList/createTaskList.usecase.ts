@@ -4,7 +4,7 @@ import {
 	CreateTaskListInput,
 	CreateTaskListOutput,
 } from './createTaskList.dto';
-import { TaskList } from '@/domain/TaskList/TaskList.entity';
+import { TaskList } from '@/domain/TaskList/tasklist.entity';
 
 export class CreateTaskListUseCase {
 	constructor(

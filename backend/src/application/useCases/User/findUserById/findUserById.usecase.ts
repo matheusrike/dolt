@@ -1,5 +1,6 @@
 import { UserRepository } from '@/domain/repositories/User.repository';
 import { FindUserByIdInput, FindUserByIdOutput } from './findUserById.dto';
+import { UserNotFound } from '../error/user-usecase.error';
 
 export class FindUserByIdUseCase {
 	constructor(private userRepository: UserRepository) {}
@@ -7,7 +8,7 @@ export class FindUserByIdUseCase {
 	async execute(input: FindUserByIdInput): Promise<FindUserByIdOutput> {
 		const user = await this.userRepository.findById(input.id);
 		if (!user) {
-			throw new Error('User not found');
+			throw new UserNotFound('User not found');
 		}
 		return {
 			name: user.Name,

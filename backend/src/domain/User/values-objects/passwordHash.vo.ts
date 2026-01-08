@@ -1,3 +1,4 @@
+import { InvalidPassword } from '../errors/user.error';
 import { PasswordHasher } from '../ports/passwordHasher';
 
 export class Password {
@@ -5,7 +6,7 @@ export class Password {
 
 	public static async create(password: string, hasher: PasswordHasher) {
 		if (!this.isStrong(password)) {
-			throw new Error(`Invalid Password`);
+			throw new InvalidPassword(`Invalid Password`);
 		}
 
 		const hashed = await hasher.hash(password);

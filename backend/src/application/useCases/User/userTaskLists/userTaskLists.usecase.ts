@@ -1,6 +1,7 @@
 import { TaskListRepository } from '@/domain/repositories/TaskList.repository';
 import { UserRepository } from '@/domain/repositories/User.repository';
 import { UserTaskListsOutput } from './userTaskLists.dto';
+import { UserNotFound } from '../error/user-usecase.error';
 
 export class UserTaskListsUsecase {
 	constructor(
@@ -10,7 +11,7 @@ export class UserTaskListsUsecase {
 
 	async execute(userId: string): Promise<UserTaskListsOutput[]> {
 		const user = await this.userRepository.findById(userId);
-		if (!user) throw new Error('User with this ID not found');
+		if (!user) throw new UserNotFound('User with this ID not found');
 
 		const taskLists = await this.taskListRepository.filterByUserId(user.Id);
 
