@@ -1,5 +1,5 @@
 import { UserRepository } from '@/domain/repositories/User.repository';
-import { User } from '@/domain/User/entities/user.entity';
+import { User } from '@/domain/User/entities/User.entity';
 import { Email } from '@/domain/User/values-objects/email.vo';
 import { Model } from 'mongoose';
 import { MongooseUserMapper } from '../mapper/mongoose-user.mapper';
@@ -8,7 +8,7 @@ import { UserDocument, UserSchema } from '../schemas/mongoose-user.schema';
 import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
-export class MongooseUserRepositoy implements UserRepository {
+export class MongooseUserRepository implements UserRepository {
 	constructor(
 		@InjectModel(UserSchema.name)
 		private readonly userModel: Model<UserDocument>,

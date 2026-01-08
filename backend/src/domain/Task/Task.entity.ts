@@ -2,7 +2,7 @@ import {
 	InvalidNewTaskTitle,
 	TaskListIdRequired,
 	TitleRequired,
-} from './errors/task.error';
+} from './task.errors';
 
 export enum TaskStatus {
 	PENDING = 'PENDING',

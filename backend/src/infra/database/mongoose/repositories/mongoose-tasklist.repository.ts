@@ -1,5 +1,5 @@
 import { TaskListRepository } from '@/domain/repositories/TaskList.repository';
-import { TaskList } from '@/domain/TaskList/tasklist.entity';
+import { TaskList } from '@/domain/TaskList/TaskList.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import {
@@ -15,6 +15,7 @@ export class MongooseTaskListRepository implements TaskListRepository {
 		@InjectModel(TaskListSchema.name)
 		private readonly taskListModel: Model<TaskListDocument>,
 	) {}
+
 	async save(data: TaskList): Promise<void> {
 		const taskList = MongooseTaskListMapper.toPersistence(data);
 		await this.taskListModel.create(taskList);

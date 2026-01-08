@@ -17,7 +17,7 @@ import {
 import {
 	CreateUserSchema,
 	FindByIdSchema,
-	UserTaskListsSchem,
+	UserTaskListsSchema,
 } from './user.schema';
 import type {
 	FindUserByIdInput,
@@ -34,7 +34,7 @@ export class UserController {
 	constructor(
 		private readonly createUserUsecase: CreateUserUseCase,
 		private readonly listUsersUsecase: ListUsersUseCase,
-		private readonly finduserByIdUsecase: FindUserByIdUseCase,
+		private readonly findUserByIdUsecase: FindUserByIdUseCase,
 		private readonly userTaskListsUsecase: UserTaskListsUsecase,
 	) {}
 	@Post()
@@ -53,11 +53,11 @@ export class UserController {
 	async getById(
 		@Param() Param: FindUserByIdInput,
 	): Promise<FindUserByIdOutput> {
-		return await this.finduserByIdUsecase.execute(Param);
+		return await this.findUserByIdUsecase.execute(Param);
 	}
 
 	@Get('tasklists/:userId')
-	@UsePipes(new ZodValidationPipe(UserTaskListsSchem))
+	@UsePipes(new ZodValidationPipe(UserTaskListsSchema))
 	async getTaskLists(
 		@Param() Param: { userId: string },
 	): Promise<UserTaskListsOutput[]> {

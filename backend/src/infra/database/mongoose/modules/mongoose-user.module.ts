@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema, UserSchemaFactory } from '../schemas/mongoose-user.schema';
-import { MongooseUserRepositoy } from '../repositories/mongoose-user.repository';
+import { MongooseUserRepository } from '../repositories/mongoose-user.repository';
 import { USER_REPOSITORY } from '@/domain/repositories/User.repository';
 
 @Module({
@@ -10,7 +10,7 @@ import { USER_REPOSITORY } from '@/domain/repositories/User.repository';
 			{ name: UserSchema.name, schema: UserSchemaFactory },
 		]),
 	],
-	providers: [{ provide: USER_REPOSITORY, useClass: MongooseUserRepositoy }],
+	providers: [{ provide: USER_REPOSITORY, useClass: MongooseUserRepository }],
 	exports: [USER_REPOSITORY],
 })
 export class MongooseUserModule {}

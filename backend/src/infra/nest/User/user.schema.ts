@@ -10,6 +10,6 @@ export const FindByIdSchema = z.object({
 	id: z.uuid(),
 });
 
-export const UserTaskListsSchem = z.object({
+export const UserTaskListsSchema = z.object({
 	userId: z.uuid(),
 });

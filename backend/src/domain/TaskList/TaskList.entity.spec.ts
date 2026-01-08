@@ -1,5 +1,5 @@
-import { InvalidTaskListName, UserIdRequired } from './errors/tasklist.error';
-import { TaskList } from './tasklist.entity';
+import { InvalidTaskListName, UserIdRequired } from './tasklist.errors';
+import { TaskList } from './TaskList.entity';
 
 describe('TaskList entity ', () => {
 	const validData = {

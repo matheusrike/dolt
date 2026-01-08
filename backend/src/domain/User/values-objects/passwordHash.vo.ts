@@ -1,4 +1,4 @@
-import { InvalidPassword } from '../errors/user.error';
+import { InvalidPassword } from '../user.error';
 import { PasswordHasher } from '../ports/passwordHasher';
 
 export class Password {

@@ -1,5 +1,5 @@
-import { TaskListIdRequired, TitleRequired } from './errors/task.error';
-import { Task, TaskStatus } from './task.entity';
+import { TaskListIdRequired, TitleRequired } from './task.errors';
+import { Task, TaskStatus } from './Task.entity';
 
 describe('Task entity', () => {
 	const validData = {
@@ -7,6 +7,7 @@ describe('Task entity', () => {
 		title: 'Title example',
 		description: 'Description example',
 	};
+
 	it('should create an Task:', () => {
 		const task = Task.create(validData);
 		expect(task).toBeDefined();

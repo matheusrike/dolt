@@ -1,4 +1,4 @@
-import { TaskList } from '@/domain/TaskList/tasklist.entity';
+import { TaskList } from '@/domain/TaskList/TaskList.entity';
 import { TaskListSchema } from '../schemas/mongoose-tasklist.schema';
 
 export class MongooseTaskListMapper {

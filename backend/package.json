@@ -8,10 +8,10 @@
 	"scripts": {
 		"build": "nest build",
 		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-		"start": "nest start --entryFile infra/http/main",
-		"start:dev": "nest start --watch --entryFile infra/http/main",
+		"start": "nest start --entryFile infra/nest/main",
+		"start:dev": "nest start --watch --entryFile infra/nest/main",
 		"start:debug": "nest start --debug --watch",
-		"start:prod": "node dist/infra/http/main.js",
+		"start:prod": "node dist/infra/nest/main.js",
 		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
 		"test": "jest",
 		"test:watch": "jest --watch",
