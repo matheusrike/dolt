@@ -9,3 +9,7 @@ export const CreateUserSchema = z.object({
 export const FindByIdSchema = z.object({
 	id: z.uuid(),
 });
+
+export const UserTaskListsSchem = z.object({
+	userId: z.uuid(),
+});

@@ -11,6 +11,7 @@ import { MongooseTaskListModule } from '@/infra/database/mongoose/modules/mongoo
 import { MongooseUserModule } from '@/infra/database/mongoose/modules/mongoose-user.module';
 import { Module } from '@nestjs/common';
 import { TaskListController } from './tasklist.controller';
+import { FindTaskListByIdUsecase } from '@/application/useCases/TaskList/findTaskListById/findTaskListById.usecase';
 
 @Module({
 	imports: [MongooseTaskListModule, MongooseUserModule],
@@ -27,6 +28,13 @@ import { TaskListController } from './tasklist.controller';
 				);
 			},
 			inject: [TASKLIST_REPOSITORY, USER_REPOSITORY],
+		},
+		{
+			provide: FindTaskListByIdUsecase,
+			useFactory: (taskListRepository: TaskListRepository) => {
+				return new FindTaskListByIdUsecase(taskListRepository);
+			},
+			inject: [TASKLIST_REPOSITORY],
 		},
 	],
 	controllers: [TaskListController],

@@ -13,9 +13,15 @@ import { UserController } from './user.controller';
 import { BcryptModule } from '@/infra/services/bcrypt.module';
 import { ListUsersUseCase } from '@/application/useCases/User/listUsers/listUsers.usecase';
 import { FindUserByIdUseCase } from '@/application/useCases/User/findUserById/findUserById.usecase';
+import { UserTaskListsUsecase } from '@/application/useCases/User/userTaskLists/userTaskLists.usecase';
+import {
+	TASKLIST_REPOSITORY,
+	TaskListRepository,
+} from '@/domain/repositories/TaskList.repository';
+import { MongooseTaskListModule } from '@/infra/database/mongoose/modules/mongoose-tasklist.module';
 
 @Module({
-	imports: [MongooseUserModule, BcryptModule],
+	imports: [MongooseUserModule, MongooseTaskListModule, BcryptModule],
 	providers: [
 		{
 			provide: CreateUserUseCase,
@@ -40,6 +46,19 @@ import { FindUserByIdUseCase } from '@/application/useCases/User/findUserById/fi
 				return new FindUserByIdUseCase(userRepository);
 			},
 			inject: [USER_REPOSITORY],
+		},
+		{
+			provide: UserTaskListsUsecase,
+			useFactory: (
+				taskListRepository: TaskListRepository,
+				userRepository: UserRepository,
+			) => {
+				return new UserTaskListsUsecase(
+					taskListRepository,
+					userRepository,
+				);
+			},
+			inject: [TASKLIST_REPOSITORY, USER_REPOSITORY],
 		},
 	],
 	controllers: [UserController],
