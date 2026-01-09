@@ -1,4 +1,4 @@
-import { DomainError } from '@/domain/Error/domain.error';
+import { DomainError } from '@/domain/errors/domain.error';
 
 export class TitleRequired extends DomainError {}
 export class TaskListIdRequired extends DomainError {}

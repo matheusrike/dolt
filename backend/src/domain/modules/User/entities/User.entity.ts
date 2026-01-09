@@ -1,4 +1,4 @@
-import { InvalidUserName } from '../user.error';
+import { InvalidUserName } from '../user.errors';
 import { Email } from '../values-objects/email.vo';
 import { Password } from '../values-objects/passwordHash.vo';
 

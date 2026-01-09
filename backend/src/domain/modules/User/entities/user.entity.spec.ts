@@ -1,5 +1,5 @@
 import { FakePasswordHasher } from '../../__tests__/fakes/fake-password-hasher';
-import { InvalidUserName } from '../user.error';
+import { InvalidUserName } from '../user.errors';
 import { Email } from '../values-objects/email.vo';
 import { Password } from '../values-objects/passwordHash.vo';
 import { User } from './User.entity';

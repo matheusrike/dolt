@@ -1,4 +1,4 @@
-import { InvalidEmail } from '../user.error';
+import { InvalidEmail } from '../user.errors';
 
 export class Email {
 	private constructor(private readonly email: string) {}
