@@ -1,5 +1,5 @@
-import { TaskListIdRequired, TitleRequired } from './task.errors';
-import { Task, TaskStatus } from './Task.entity';
+import { TaskListIdRequired, TitleRequired } from '../task.error';
+import { Task, TaskStatus } from '../task.entity';
 
 describe('Task entity', () => {
 	const validData = {

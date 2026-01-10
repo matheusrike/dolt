@@ -1,4 +1,4 @@
-import { InvalidTaskListName, UserIdRequired } from './tasklist.errors';
+import { InvalidTaskListName, UserIdRequired } from './tasklist.error';
 
 type TaskListProps = {
 	readonly id: string;

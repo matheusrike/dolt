@@ -1,5 +1,5 @@
-import { TaskListRepository } from '@/domain/repositories/TaskList.repository';
-import { TaskList } from '@/domain/TaskList/TaskList.entity';
+import { TaskListRepository } from '@/domain/modules/TaskList/taskList.repository';
+import { TaskList } from '@/domain/modules/TaskList/taskList.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import {

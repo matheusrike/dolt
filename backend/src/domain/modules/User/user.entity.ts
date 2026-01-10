@@ -1,6 +1,6 @@
-import { InvalidUserName } from '../user.errors';
-import { Email } from '../values-objects/email.vo';
-import { Password } from '../values-objects/passwordHash.vo';
+import { InvalidUserName } from './user.error';
+import { Email } from './values-objects/email.vo';
+import { Password } from './values-objects/passwordHash.vo';
 
 export interface UserProps {
 	readonly id: string;

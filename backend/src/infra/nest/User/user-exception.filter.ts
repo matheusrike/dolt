@@ -1,12 +1,12 @@
 import {
 	UserAlreadyExists,
 	UserNotFound,
-} from '@/application/useCases/User/user-usecase.errors';
+} from '@/application/useCases/User/user-usecase.error';
 import {
 	InvalidEmail,
 	InvalidPassword,
 	InvalidUserName,
-} from '@/domain/User/user.error';
+} from '@/domain/modules/User/user.error';
 import {
 	BadRequestException,
 	Catch,

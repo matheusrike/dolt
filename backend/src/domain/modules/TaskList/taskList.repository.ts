@@ -1,4 +1,4 @@
-import { TaskList } from '../TaskList/TaskList.entity';
+import { TaskList } from './taskList.entity';
 
 export interface TaskListRepository {
 	save(data: TaskList): Promise<void> | void;

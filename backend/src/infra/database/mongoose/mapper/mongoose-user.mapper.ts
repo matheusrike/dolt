@@ -1,7 +1,7 @@
 // infra/mappers/MongooseUser.mapper.ts
-import { User } from '@/domain/User/entities/User.entity';
-import { Email } from '@/domain/User/values-objects/email.vo';
-import { Password } from '@/domain/User/values-objects/passwordHash.vo';
+import { User } from '@/domain/modules/User/user.entity';
+import { Email } from '@/domain/modules/User/values-objects/email.vo';
+import { Password } from '@/domain/modules/User/values-objects/passwordHash.vo';
 import { UserSchema } from '../schemas/mongoose-user.schema';
 
 export class MongooseUserMapper {

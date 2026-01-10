@@ -1,4 +1,4 @@
-import { PasswordHasher } from '@domain/User/ports/passwordHasher';
+import { PasswordHasher } from '@/domain/modules/User/ports/passwordHasher';
 
 export class FakePasswordHasher implements PasswordHasher {
 	hash(value: string): string {

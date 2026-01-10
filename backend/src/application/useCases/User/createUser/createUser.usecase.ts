@@ -1,10 +1,10 @@
-import { PasswordHasher } from '@/domain/User/ports/passwordHasher';
-import { UserRepository } from '@domain/repositories/User.repository';
+import { PasswordHasher } from '@/domain/modules/User/ports/passwordHasher';
+import { UserRepository } from '@/domain/modules/User/user.repository';
 import { CreateUserInput, CreateUserOutput } from './createUser.dto';
-import { User } from '@/domain/User/entities/User.entity';
-import { Password } from '@/domain/User/values-objects/passwordHash.vo';
-import { Email } from '@/domain/User/values-objects/email.vo';
-import { UserAlreadyExists } from '../user-usecase.errors';
+import { User } from '@/domain/modules/User/user.entity';
+import { Password } from '@/domain/modules/User/values-objects/passwordHash.vo';
+import { Email } from '@/domain/modules/User/values-objects/email.vo';
+import { UserAlreadyExists } from '../user-usecase.error';
 
 export class CreateUserUseCase {
 	constructor(

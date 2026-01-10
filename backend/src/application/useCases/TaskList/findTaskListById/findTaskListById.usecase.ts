@@ -1,4 +1,4 @@
-import { TaskListRepository } from '@/domain/repositories/TaskList.repository';
+import { TaskListRepository } from '@/domain/modules/TaskList/taskList.repository';
 import { FindTaskListByIdOutput } from './findTaskListById.dto';
 
 export class FindTaskListByIdUsecase {

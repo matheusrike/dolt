@@ -1,5 +1,5 @@
 import { FakePasswordHasher } from '../../__tests__/fakes/fake-password-hasher';
-import { Password } from './passwordHash.vo';
+import { Password } from '../../values-objects/passwordHash.vo';
 
 describe('Password VO', () => {
 	const hasher = new FakePasswordHasher();

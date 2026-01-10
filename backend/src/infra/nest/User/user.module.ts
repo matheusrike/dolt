@@ -2,11 +2,11 @@ import { CreateUserUseCase } from '@/application/useCases/User/createUser/create
 import {
 	USER_REPOSITORY,
 	UserRepository,
-} from '@/domain/repositories/User.repository';
+} from '@/domain/modules/User/user.repository';
 import {
 	PASSWORD_HASHER,
 	PasswordHasher,
-} from '@/domain/User/ports/passwordHasher';
+} from '@/domain/modules/User/ports/passwordHasher';
 import { MongooseUserModule } from '@/infra/database/mongoose/modules/mongoose-user.module';
 import { Module } from '@nestjs/common';
 import { UserController } from './user.controller';
@@ -17,7 +17,7 @@ import { UserTaskListsUsecase } from '@/application/useCases/User/userTaskLists/
 import {
 	TASKLIST_REPOSITORY,
 	TaskListRepository,
-} from '@/domain/repositories/TaskList.repository';
+} from '@/domain/modules/TaskList/taskList.repository';
 import { MongooseTaskListModule } from '@/infra/database/mongoose/modules/mongoose-tasklist.module';
 
 @Module({

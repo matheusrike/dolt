@@ -2,11 +2,11 @@ import { CreateTaskListUseCase } from '@/application/useCases/TaskList/createTas
 import {
 	TASKLIST_REPOSITORY,
 	TaskListRepository,
-} from '@/domain/repositories/TaskList.repository';
+} from '@/domain/modules/TaskList/taskList.repository';
 import {
 	USER_REPOSITORY,
 	UserRepository,
-} from '@/domain/repositories/User.repository';
+} from '@/domain/modules/User/user.repository';
 import { MongooseTaskListModule } from '@/infra/database/mongoose/modules/mongoose-tasklist.module';
 import { MongooseUserModule } from '@/infra/database/mongoose/modules/mongoose-user.module';
 import { Module } from '@nestjs/common';

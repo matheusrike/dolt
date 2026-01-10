@@ -1,10 +1,10 @@
-import { TaskListRepository } from '@/domain/repositories/TaskList.repository';
-import { UserRepository } from '@/domain/repositories/User.repository';
+import { TaskListRepository } from '@/domain/modules/TaskList/taskList.repository';
+import { UserRepository } from '@/domain/modules/User/user.repository';
 import {
 	CreateTaskListInput,
 	CreateTaskListOutput,
 } from './createTaskList.dto';
-import { TaskList } from '@/domain/TaskList/TaskList.entity';
+import { TaskList } from '@/domain/modules/TaskList/taskList.entity';
 
 export class CreateTaskListUseCase {
 	constructor(

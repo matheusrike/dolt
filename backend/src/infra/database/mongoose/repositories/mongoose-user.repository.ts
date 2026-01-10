@@ -1,6 +1,6 @@
-import { UserRepository } from '@/domain/repositories/User.repository';
-import { User } from '@/domain/User/entities/User.entity';
-import { Email } from '@/domain/User/values-objects/email.vo';
+import { UserRepository } from '@/domain/modules/User/user.repository';
+import { User } from '@/domain/modules/User/user.entity';
+import { Email } from '@/domain/modules/User/values-objects/email.vo';
 import { Model } from 'mongoose';
 import { MongooseUserMapper } from '../mapper/mongoose-user.mapper';
 import { Injectable } from '@nestjs/common';

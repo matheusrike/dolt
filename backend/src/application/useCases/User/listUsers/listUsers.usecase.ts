@@ -1,4 +1,4 @@
-import { UserRepository } from '@/domain/repositories/User.repository';
+import { UserRepository } from '@/domain/modules/User/user.repository';
 import { ListUsersOutput } from './listUsers.dto';
 
 export class ListUsersUseCase {
