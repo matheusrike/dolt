@@ -2,7 +2,7 @@ import { TaskList } from '@/domain/modules/TaskList/taskList.entity';
 import { TaskListSchema } from '../schemas/mongoose-tasklist.schema';
 
 export class MongooseTaskListMapper {
-	static toPersistence(taskList: TaskList) {
+	static toPersistence(taskList: TaskList): TaskListSchema {
 		return {
 			_id: taskList.Id,
 			userId: taskList.UserId,

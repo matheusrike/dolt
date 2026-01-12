@@ -1,7 +1,7 @@
 import {
 	UserAlreadyExists,
 	UserNotFound,
-} from '@/application/useCases/User/user-usecase.error';
+} from '@/application/shared/usecase.error';
 import {
 	InvalidEmail,
 	InvalidPassword,

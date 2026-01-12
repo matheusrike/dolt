@@ -8,3 +8,16 @@ export const CreateTaskListSchema = z.object({
 export const FindTaskListByIdSchema = z.object({
 	id: z.uuid(),
 });
+
+export const ListTasksSchema = z.object({
+	id: z.uuid(),
+});
+
+export const CreateTaskParamsSchema = z.object({
+	id: z.uuid(),
+});
+
+export const CreateTaskBodySchema = z.object({
+	title: z.string('Title is required'),
+	description: z.string().optional(),
+});

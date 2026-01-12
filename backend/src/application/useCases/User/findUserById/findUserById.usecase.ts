@@ -1,6 +1,6 @@
 import { UserRepository } from '@/domain/modules/User/user.repository';
 import { FindUserByIdInput, FindUserByIdOutput } from './findUserById.dto';
-import { UserNotFound } from '../user-usecase.error';
+import { UserNotFound } from '@/application/shared/usecase.error';
 
 export class FindUserByIdUseCase {
 	constructor(private userRepository: UserRepository) {}

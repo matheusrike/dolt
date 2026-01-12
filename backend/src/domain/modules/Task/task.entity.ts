@@ -23,7 +23,7 @@ type TaskProps = {
 type CreateTaskProps = {
 	taskListId: string;
 	title: string;
-	description: string;
+	description?: string;
 };
 
 export class Task {
@@ -65,5 +65,33 @@ export class Task {
 	changeStatus(newStatus: TaskStatus): void {
 		this.taskProps.status = newStatus;
 		this.taskProps.updatedAt = new Date();
+	}
+
+	get Id(): string {
+		return this.taskProps.id;
+	}
+
+	get TaskListId(): string {
+		return this.taskProps.taskListId;
+	}
+
+	get Title(): string {
+		return this.taskProps.title;
+	}
+
+	get Description(): string | undefined {
+		return this.taskProps.description;
+	}
+
+	get Status(): TaskStatus {
+		return this.taskProps.status;
+	}
+
+	get CreatedAt(): Date {
+		return this.taskProps.createdAt;
+	}
+
+	get UpdatedAt(): Date | undefined {
+		return this.taskProps.updatedAt;
 	}
 }

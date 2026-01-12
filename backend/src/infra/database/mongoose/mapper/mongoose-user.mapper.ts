@@ -5,7 +5,7 @@ import { Password } from '@/domain/modules/User/values-objects/passwordHash.vo';
 import { UserSchema } from '../schemas/mongoose-user.schema';
 
 export class MongooseUserMapper {
-	static toPersistence(user: User) {
+	static toPersistence(user: User): UserSchema {
 		return {
 			_id: user.Id,
 			name: user.Name,

@@ -16,7 +16,7 @@ export class TaskListSchema {
 	createdAt: Date;
 
 	@Prop({ type: Date, required: false })
-	updatedAt: Date;
+	updatedAt?: Date;
 }
 
 export type TaskListDocument = HydratedDocument<TaskListSchema>;

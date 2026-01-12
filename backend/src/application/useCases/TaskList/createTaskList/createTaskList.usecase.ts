@@ -5,6 +5,7 @@ import {
 	CreateTaskListOutput,
 } from './createTaskList.dto';
 import { TaskList } from '@/domain/modules/TaskList/taskList.entity';
+import { UserNotFound } from '@/application/shared/usecase.error';
 
 export class CreateTaskListUseCase {
 	constructor(
@@ -15,7 +16,7 @@ export class CreateTaskListUseCase {
 	async execute(input: CreateTaskListInput): Promise<CreateTaskListOutput> {
 		const user = await this.userRepository.findById(input.userId);
 		if (!user) {
-			throw new Error('User with this ID not found');
+			throw new UserNotFound('User with this ID not found');
 		}
 		const newTaskList = TaskList.create({
 			userId: user.Id,

@@ -1,7 +1,7 @@
 import { TaskListRepository } from '@/domain/modules/TaskList/taskList.repository';
 import { UserRepository } from '@/domain/modules/User/user.repository';
 import { UserTaskListsOutput } from './userTaskLists.dto';
-import { UserNotFound } from '../user-usecase.error';
+import { UserNotFound } from '@/application/shared/usecase.error';
 
 export class UserTaskListsUsecase {
 	constructor(

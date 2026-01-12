@@ -4,7 +4,7 @@ import { CreateUserInput, CreateUserOutput } from './createUser.dto';
 import { User } from '@/domain/modules/User/user.entity';
 import { Password } from '@/domain/modules/User/values-objects/passwordHash.vo';
 import { Email } from '@/domain/modules/User/values-objects/email.vo';
-import { UserAlreadyExists } from '../user-usecase.error';
+import { UserAlreadyExists } from '@/application/shared/usecase.error';
 
 export class CreateUserUseCase {
 	constructor(
