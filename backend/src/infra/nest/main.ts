@@ -1,11 +1,16 @@
 import { NestFactory } from '@nestjs/core';
-import { MainModule } from './main.module';
+import { AppModule } from './app.module';
 import { SuccessResponseInterceptor } from './interceptors/response.interceptor';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap(): Promise<void> {
-	const app = await NestFactory.create(MainModule);
-	const PORT = process.env.PORT ?? 3000;
+	const app = await NestFactory.create(AppModule);
 
+	const configService = app.get(ConfigService);
+
+	const PORT = configService.get<number>('PORT', 3000);
+
+	// Define interceptor para formatar as respostas
 	app.useGlobalInterceptors(new SuccessResponseInterceptor());
 
 	await app.listen(PORT).then(() => {
