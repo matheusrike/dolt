@@ -1,36 +1,36 @@
-import { User } from '@/domain/modules/User/user.entity';
 import type { UserRepository } from '@/domain/modules/User/user.repository';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import type { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 export type JwtPayload = {
 	sub: string;
 	email: string;
+	type: 'access' | 'refresh';
 };
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 	constructor(
+		// Recebe userRepository e configService por injeção de dependência
 		private readonly userRepository: UserRepository,
 		private readonly configService: ConfigService,
 	) {
+		// Configurações da estrategia de jwt do passport
 		super({
+			// Extrai o token do cabeçalho 'Authorization' da requisição
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+			// Define se deve ou não ignorar a expiração do token
 			ignoreExpiration: false,
+			// Valida a assinatura do token de acordo com a chave secreta
 			secretOrKey: configService.get<string>('JWT_ACCESS_SECRET')!,
 		});
 	}
 
-	async validate(payload: JwtPayload): Promise<User> {
-		const { sub: userId } = payload;
-
-		const user = await this.userRepository.findById(userId);
-		if (!user) {
-			throw new UnauthorizedException('User not found');
-		}
-
-		return user;
+	// Valida o access token e o torna disponível no request (req.user)
+	validate(payload: JwtPayload) {
+		if (payload.type !== 'access') throw new UnauthorizedException();
+		return payload;
 	}
 }

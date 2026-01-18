@@ -5,6 +5,7 @@ import { TaskListModule } from './TaskList/tasklist.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { envSchema } from './env.schema';
 import { z } from 'zod';
+import { AuthModule } from './Auth/auth.module';
 
 @Module({
 	imports: [
@@ -37,9 +38,10 @@ import { z } from 'zod';
 			}),
 		}),
 
-		// Módulos de domínio
+		// Outros módulos
 		UserModule,
 		TaskListModule,
+		AuthModule,
 	],
 })
 export class AppModule {}
