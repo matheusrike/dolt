@@ -1,14 +1,14 @@
-import { PASSWORD_HASHER } from '@/domain/modules/User/ports/passwordHasher';
+import { PasswordHasher } from '@/domain/modules/User/ports/passwordHasher';
 import { Module } from '@nestjs/common';
 import { BcryptPasswordHasher } from './bcrypt.service';
 
 @Module({
 	providers: [
 		{
-			provide: PASSWORD_HASHER,
+			provide: PasswordHasher,
 			useClass: BcryptPasswordHasher,
 		},
 	],
-	exports: [PASSWORD_HASHER],
+	exports: [PasswordHasher],
 })
 export class BcryptModule {}

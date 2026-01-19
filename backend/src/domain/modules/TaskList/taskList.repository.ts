@@ -1,13 +1,9 @@
 import { TaskList } from './taskList.entity';
 
-export interface TaskListRepository {
-	save(data: TaskList): Promise<void> | void;
-	findById(id: string): Promise<TaskList | null> | TaskList | null;
-	filterByUserId(
+export abstract class TaskListRepository {
+	abstract save(data: TaskList): Promise<void> | void;
+	abstract findById(id: string): Promise<TaskList | null> | TaskList | null;
+	abstract filterByUserId(
 		userId: string,
 	): Promise<(TaskList | null)[]> | (TaskList | null)[];
 }
-
-export const TASKLIST_REPOSITORY = Symbol('TaskListRepository');
-
-export const TaskListRepositoryToken = () => TASKLIST_REPOSITORY;

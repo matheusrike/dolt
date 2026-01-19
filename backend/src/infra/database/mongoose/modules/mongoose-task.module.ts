@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TaskSchema, TaskSchemaFactory } from '../schemas/mongoose-task.schema';
-import { TASK_REPOSITORY } from '@/domain/modules/Task/task.repository';
+import { TaskRepository } from '@/domain/modules/Task/task.repository';
 import { MongooseTaskRepository } from '../repositories/mongoose-task.repository';
 
 @Module({
@@ -10,7 +10,7 @@ import { MongooseTaskRepository } from '../repositories/mongoose-task.repository
 			{ name: TaskSchema.name, schema: TaskSchemaFactory },
 		]),
 	],
-	providers: [{ provide: TASK_REPOSITORY, useClass: MongooseTaskRepository }],
-	exports: [TASK_REPOSITORY],
+	providers: [{ provide: TaskRepository, useClass: MongooseTaskRepository }],
+	exports: [TaskRepository],
 })
 export class MongooseTaskModule {}

@@ -4,7 +4,7 @@ import {
 	TaskListSchema,
 	TaskListSchemaFactory,
 } from '../schemas/mongoose-tasklist.schema';
-import { TASKLIST_REPOSITORY } from '@/domain/modules/TaskList/taskList.repository';
+import { TaskListRepository } from '@/domain/modules/TaskList/taskList.repository';
 import { MongooseTaskListRepository } from '../repositories/mongoose-tasklist.repository';
 
 @Module({
@@ -14,8 +14,8 @@ import { MongooseTaskListRepository } from '../repositories/mongoose-tasklist.re
 		]),
 	],
 	providers: [
-		{ provide: TASKLIST_REPOSITORY, useClass: MongooseTaskListRepository },
+		{ provide: TaskListRepository, useClass: MongooseTaskListRepository },
 	],
-	exports: [TASKLIST_REPOSITORY],
+	exports: [TaskListRepository],
 })
 export class MongooseTaskListModule {}
