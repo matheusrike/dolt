@@ -1,20 +1,16 @@
-import type { UserRepository } from '@/domain/modules/User/user.repository';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import type { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
-export type JwtPayload = {
-	sub: string;
-	email: string;
+export type jwtToken = {
 	type: 'access' | 'refresh';
 };
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 	constructor(
-		// Recebe userRepository e configService por injeção de dependência
-		private readonly userRepository: UserRepository,
+		// Recebe configService por injeção de dependência
 		private readonly configService: ConfigService,
 	) {
 		// Configurações da estrategia de jwt do passport
@@ -29,7 +25,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 	}
 
 	// Valida o access token e o torna disponível no request (req.user)
-	validate(payload: JwtPayload) {
+	validate(payload: jwtToken) {
 		if (payload.type !== 'access') throw new UnauthorizedException();
 		return payload;
 	}
