@@ -1,14 +1,24 @@
 import { Routes } from '@angular/router';
-import { Home } from './components/home/home';
-import { App } from './app';
+import { Login } from './components/login/login';
+import { Register } from './components/register/register';
+import { PageNotFound } from './components/page-not-found/page-not-found';
+
+// Add Routes Here
 
 export const routes: Routes = [
+  // Simple Routes
   {
     path: '',
-    component: App,
+    component: Login,
   },
   {
-    path: 'home',
-    component: Home,
+    path: 'register',
+    component: Register,
+  },
+
+  // Wrong Routes
+  {
+    path: '**',
+    component: PageNotFound,
   },
 ];

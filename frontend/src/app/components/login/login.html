@@ -1,0 +1,223 @@
+<div class="bg-gray-200 dark:bg-zinc-800 md:h-screen w-full">
+  <div class="grid md:grid-cols-2 items-center gap-8 h-full">
+    <!-- image -->
+    <div class="max-md:order-1 p-4 w-full h-full flex justify-center items-center">
+      <img class="h-118" src="/images/login/loginImage.svg" alt="login-image" />
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-center bg-background  md:p-8 p-6 md:rounded-tl-[55px] md:rounded-bl-[55px] h-full"
+    >
+      <!-- logo component -->
+      <div class="absolute top-20 right-15 z-50">
+        <img class="h-18 flex dark:hidden" src="/images/logo/logo-light.png" alt="dfdfdf" />
+        <img class="h-18 hidden dark:flex" src="/images/logo/logo-dark.png" alt="dfdfdf" />
+      </div>
+
+      <!-- form component -->
+      <form class="max-w-lg w-full mx-auto">
+
+        <!-- register link -->
+        <div class="mb-12">
+          <h3 class="text-foreground text-4xl font-bold">Sign in</h3>
+          <p class="text-slate-600 dark:text-gray-300 text-sm mt-6">
+            Don't have an account
+            <a
+              href="/register"
+              class="text-blue-600 font-medium hover:underline ml-1 whitespace-nowrap"
+              >Register here</a
+            >
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          <!-- email -->
+          <div class="[--clr:#1f1f1f] dark:[--clr:#999999] relative flex flex-row items-center">
+            <input
+              value=""
+              name="email"
+              required=""
+              aria-invalid="false"
+              placeholder=""
+              spellcheck="false"
+              autocomplete="off"
+              id="email"
+              type="email"
+              class="peer text-black dark:text-white pl-2 h-[40px] min-h-[40px] pr-[40px] leading-normal appearance-none resize-none box-border text-base w-full text-inherit block text-left border border-solid bg-white dark:bg-zinc-800 rounded-[10px] m-0 p-0 outline-0 focus-visible:outline-0 focus-visible:border-blue-600 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#71717a2e] dark:focus-visible:ring-[#14b8a61a]"
+            />
+            <label
+              class="cursor-text text-[--clr] inline-block z-0 text-sm mb-px font-normal text-start select-none absolute duration-300 transform origin-[0] translate-x-[32px] peer-focus-visible:text-blue-600 peer-focus-visible:translate-x-[8px] peer-[:not(:placeholder-shown)]:translate-x-[8px] peer-focus-visible:translate-y-[-36px] peer-[:not(:placeholder-shown)]:translate-y-[-36px] peer-[:not(:placeholder-shown)]:text-[-36px]"
+              for="email"
+            >
+              Email
+            </label>
+            <span
+              class="pointer-events-none absolute z-[+1] left-0 top-0 bottom-0 flex items-center justify-center size-[40px] text-[--clr] peer-focus-visible:hidden peer-[:not(:placeholder-shown)]:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1rem"
+                height="1rem"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path fill="none" d="M0 0h24v24H0z" stroke="none"></path>
+                <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
+              </svg>
+            </span>
+            <div
+              class="group w-[40px] absolute top-0 bottom-0 right-0 flex items-center justify-center text-[--clr] peer-focus-visible:text-blue-600 peer-focus-visible:[&amp;_span]:border-teal-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1rem"
+                height="1rem"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path fill="none" d="M0 0h24v24H0z" stroke="none"></path>
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                <path d="M12 8v4"></path>
+                <path d="M12 16h.01"></path>
+              </svg>
+              <span
+                class="text-sm absolute cursor-default select-none rounded-[4px] px-1.5 opacity-0 right-0 -z-10 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-[calc(100%+18px)]"
+                >Required!</span
+              >
+            </div>
+          </div>
+
+          <!-- password -->
+          <div class="[--clr:#1f1f1f] dark:[--clr:#999999] relative flex flex-row items-center">
+            <input
+              value=""
+              name="password"
+              required=""
+              aria-invalid="false"
+              placeholder=""
+              spellcheck="false"
+              autocomplete="off"
+              id="password"
+              type="password"
+              class="peer text-black dark:text-white pl-2 h-[40px] min-h-[40px] pr-[40px] leading-normal appearance-none resize-none box-border text-base w-full text-inherit block text-left border border-solid bg-white dark:bg-zinc-800 rounded-[10px] m-0 p-0 outline-0 focus-visible:outline-0 focus-visible:border-blue-600 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#71717a2e] dark:focus-visible:ring-[#14b8a61a]"
+            />
+            <label
+              class="cursor-text text-[--clr] inline-block z-0 text-sm mb-px font-normal text-start select-none absolute duration-300 transform origin-[0] translate-x-[32px] peer-focus-visible:text-blue-600 peer-focus-visible:translate-x-[8px] peer-[:not(:placeholder-shown)]:translate-x-[8px] peer-focus-visible:translate-y-[-36px] peer-[:not(:placeholder-shown)]:translate-y-[-36px] peer-[:not(:placeholder-shown)]:text-[-36px]"
+              for="password"
+            >
+              Password
+            </label>
+            <span
+              class="pointer-events-none absolute z-[+1] left-0 top-0 bottom-0 flex items-center justify-center size-[40px] text-[--clr] peer-focus-visible:hidden peer-[:not(:placeholder-shown)]:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1rem"
+                height="1rem"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path fill="none" d="M0 0h24v24H0z" stroke="none"></path>
+                <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
+              </svg>
+            </span>
+            <div
+              class="group w-[40px] absolute top-0 bottom-0 right-0 flex items-center justify-center text-[--clr] peer-focus-visible:text-blue-600 peer-focus-visible:[&amp;_span]:border-teal-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1rem"
+                height="1rem"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path fill="none" d="M0 0h24v24H0z" stroke="none"></path>
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                <path d="M12 8v4"></path>
+                <path d="M12 16h.01"></path>
+              </svg>
+              <span
+                class="text-sm absolute cursor-default select-none rounded-[4px] px-1.5 opacity-0 right-0 -z-10 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-[calc(100%+18px)]"
+                >Required!</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- login -->
+        <div class="mt-12">
+          <button
+            type="button"
+            class="w-full py-3 px-6 text-sm font-medium cursor-pointer tracking-wider rounded-full text-white bg-primary hover:bg-blue-900 focus:outline-none"
+          >
+            Sign in
+          </button>
+        </div>
+
+        <div class="my-4 flex items-center gap-4">
+          <hr class="w-full border-slate-300" />
+          <p class="text-sm text-slate-900 dark:text-white text-center">or</p>
+          <hr class="w-full border-slate-300" />
+        </div>
+
+        <button
+          (click)="toggleDarkMode()"
+          type="button"
+          class="w-full flex items-center justify-center gap-4 py-3 px-6 text-sm font-medium cursor-pointer tracking-wider text-slate-900 border border-slate-300 rounded-full bg-slate-50 hover:bg-slate-100 focus:outline-none"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" class="inline" viewBox="0 0 512 512">
+            <path
+              fill="#fbbd00"
+              d="M120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308H52.823C18.568 144.703 0 198.922 0 256s18.568 111.297 52.823 155.785h86.308v-86.308C126.989 305.13 120 281.367 120 256z"
+              data-original="#fbbd00"
+            />
+            <path
+              fill="#0f9d58"
+              d="m256 392-60 60 60 60c57.079 0 111.297-18.568 155.785-52.823v-86.216h-86.216C305.044 385.147 281.181 392 256 392z"
+              data-original="#0f9d58"
+            />
+            <path
+              fill="#31aa52"
+              d="m139.131 325.477-86.308 86.308a260.085 260.085 0 0 0 22.158 25.235C123.333 485.371 187.62 512 256 512V392c-49.624 0-93.117-26.72-116.869-66.523z"
+              data-original="#31aa52"
+            />
+            <path
+              fill="#3c79e6"
+              d="M512 256a258.24 258.24 0 0 0-4.192-46.377l-2.251-12.299H256v120h121.452a135.385 135.385 0 0 1-51.884 55.638l86.216 86.216a260.085 260.085 0 0 0 25.235-22.158C485.371 388.667 512 324.38 512 256z"
+              data-original="#3c79e6"
+            />
+            <path
+              fill="#cf2d48"
+              d="m352.167 159.833 10.606 10.606 84.853-84.852-10.606-10.606C388.668 26.629 324.381 0 256 0l-60 60 60 60c36.326 0 70.479 14.146 96.167 39.833z"
+              data-original="#cf2d48"
+            />
+            <path
+              fill="#eb4132"
+              d="M256 120V0C187.62 0 123.333 26.629 74.98 74.98a259.849 259.849 0 0 0-22.158 25.235l86.308 86.308C162.883 146.72 206.376 120 256 120z"
+              data-original="#eb4132"
+            />
+          </svg>
+          Continue with google
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

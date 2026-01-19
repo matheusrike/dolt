@@ -7,9 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './home.css',
 })
 export class Home {
-  submit() {
-    console.log("Teste");
-  }
 
-  titleOn = true;
 }
