@@ -5,15 +5,13 @@ import { User } from '@/domain/modules/User/user.entity';
 import { Password } from '@/domain/modules/User/values-objects/passwordHash.vo';
 import { Email } from '@/domain/modules/User/values-objects/email.vo';
 import { UserAlreadyExists } from '@/application/shared/usecase.error';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
+import { Authenticator } from '@/domain/modules/User/ports/authenticator';
 
 export class RegisterUseCase {
 	constructor(
 		private userRepository: UserRepository,
 		private passwordHasher: PasswordHasher,
-		private jwtService: JwtService,
-		private configService: ConfigService,
+		private authenticator: Authenticator,
 	) {}
 
 	async execute(input: RegisterInput): Promise<RegisterOutput> {
@@ -37,15 +35,8 @@ export class RegisterUseCase {
 
 		const payload = { sub: newUser.Id, email: newUser.Email };
 
-		const [accessToken, refreshToken] = await Promise.all([
-			this.jwtService.signAsync(payload),
-			this.jwtService.signAsync(payload, {
-				secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
-				expiresIn: this.configService.get<number>(
-					'JWT_REFRESH_EXPIRES_IN',
-				),
-			}),
-		]);
+		const [accessToken, refreshToken] =
+			await this.authenticator.sign(payload);
 
 		return {
 			user: {
