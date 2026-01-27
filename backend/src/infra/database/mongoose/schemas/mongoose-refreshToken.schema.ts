@@ -4,9 +4,6 @@ import { HydratedDocument } from 'mongoose';
 //Declara o schema do refresh token
 @Schema({ collection: 'refreshToken', timestamps: true })
 export class RefreshTokenSchema {
-	@Prop({ type: String })
-	_id: string;
-
 	@Prop({ required: true })
 	userId: string;
 
@@ -15,12 +12,6 @@ export class RefreshTokenSchema {
 
 	@Prop({ required: true })
 	expiresAt: Date;
-
-	@Prop({ required: true })
-	createdAt: Date;
-
-	@Prop({ type: Date })
-	updatedAt?: Date;
 }
 
 // Exporta o schema para uso no modulo

@@ -12,7 +12,6 @@ import { PasswordHasher } from '@/domain/modules/User/ports/passwordHasher';
 import { RefreshTokenRepository } from './refreshToken.repository';
 import { MongooseUserModule } from '@/infra/database/mongoose/modules/mongoose-user.module';
 import { AuthService } from './auth.service';
-import { MongooseRefreshTokenRepository } from '@/infra/database/mongoose/repositories/mongoose-refreshToken.repository';
 import { MongooseRefreshTokenModule } from '@/infra/database/mongoose/modules/mongoose-refreshToken.module';
 
 @Module({
@@ -33,15 +32,11 @@ import { MongooseRefreshTokenModule } from '@/infra/database/mongoose/modules/mo
 			}),
 		}),
 	],
-	controllers: [AuthController],
+
 	providers: [
 		{
 			provide: Authenticator,
 			useClass: AuthService,
-		},
-		{
-			provide: RefreshTokenRepository,
-			useClass: MongooseRefreshTokenRepository,
 		},
 		{
 			provide: RegisterUseCase,
@@ -66,5 +61,6 @@ import { MongooseRefreshTokenModule } from '@/infra/database/mongoose/modules/mo
 			],
 		},
 	],
+	controllers: [AuthController],
 })
 export class AuthModule {}
