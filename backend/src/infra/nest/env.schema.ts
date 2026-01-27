@@ -7,7 +7,7 @@ export const envSchema = z.object({
 		'NODE_ENV is required in .env',
 	),
 	MONGO_URL: z.string('MONGO_URL is required in .env'),
-	PORT: z.number().int().optional(),
+	PORT: z.string().optional(),
 	JWT_SECRET: z.string('JWT_SECRET is required in .env'),
 	JWT_EXPIRES_IN: z.string('JWT_EXPIRES_IN is required in .env'),
 	JWT_REFRESH_SECRET: z.string('JWT_REFRESH_SECRET is required in .env'),

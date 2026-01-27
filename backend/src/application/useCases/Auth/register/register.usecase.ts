@@ -6,12 +6,14 @@ import { Password } from '@/domain/modules/User/values-objects/passwordHash.vo';
 import { Email } from '@/domain/modules/User/values-objects/email.vo';
 import { UserAlreadyExists } from '@/application/shared/usecase.error';
 import { Authenticator } from '@/domain/modules/User/ports/authenticator';
+import { RefreshTokenRepository } from '@/infra/nest/Auth/refreshToken.repository';
 
 export class RegisterUseCase {
 	constructor(
 		private userRepository: UserRepository,
 		private passwordHasher: PasswordHasher,
 		private authenticator: Authenticator,
+		private refreshTokenRepository: RefreshTokenRepository,
 	) {}
 
 	async execute(input: RegisterInput): Promise<RegisterOutput> {
@@ -37,6 +39,8 @@ export class RegisterUseCase {
 
 		const [accessToken, refreshToken] =
 			await this.authenticator.sign(payload);
+
+		await this.refreshTokenRepository.save(refreshToken);
 
 		return {
 			user: {

@@ -8,13 +8,13 @@ export const registerBodySchema = z.object({
 });
 
 export const registerResponseSchema = z.object({
-	user: z.object({
-		id: z.string(),
-		name: z.string(),
-		email: z.string().email(),
-	}),
+	// user: z.object({
+	// 	id: z.string(),
+	// 	name: z.string(),
+	// 	email: z.email(),
+	// }),
 	accessToken: z.string(),
-	refreshToken: z.string(),
+	// refreshToken: z.string(),
 });
 
 export type RegisterBody = z.infer<typeof registerBodySchema>;
