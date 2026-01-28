@@ -14,8 +14,16 @@ export class MongooseRefreshTokenRepository implements RefreshTokenRepository {
 		private readonly refreshTokenModel: Model<RefreshTokenDocument>,
 	) {}
 
-	async save(data: string): Promise<void> {
-		await this.refreshTokenModel.create({ token: data });
+	async save(data: {
+		userId: string;
+		token: string;
+		expiresAt: Date;
+	}): Promise<void> {
+		await this.refreshTokenModel.create({
+			userId: data.userId,
+			token: data.token,
+			expiresAt: data.expiresAt,
+		});
 	}
 
 	async findByToken(token: string): Promise<string | null> {

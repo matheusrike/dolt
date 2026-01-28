@@ -33,14 +33,20 @@ export class RegisterUseCase {
 			passwordHash,
 		});
 
-		await this.userRepository.save(newUser);
-
 		const payload = { sub: newUser.Id, email: newUser.Email };
 
-		const [accessToken, refreshToken] =
+		const { accessToken, refreshToken } =
 			await this.authenticator.sign(payload);
 
-		await this.refreshTokenRepository.save(refreshToken);
+		const expiresInSeconds = 60 * 60 * 24 * 7; // 7 days
+
+		const expiresAt = new Date(Date.now() + expiresInSeconds * 1000);
+		await this.refreshTokenRepository.save({
+			userId: newUser.Id,
+			token: refreshToken,
+			expiresAt,
+		});
+		await this.userRepository.save(newUser);
 
 		return {
 			user: {
