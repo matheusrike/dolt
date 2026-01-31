@@ -6,7 +6,7 @@ export type RegisterInput = {
 
 export type RegisterOutput = {
 	user: {
-		id: string;
+		sub: string;
 		name: string;
 		email: string;
 	};

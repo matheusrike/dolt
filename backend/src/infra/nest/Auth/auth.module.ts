@@ -13,6 +13,7 @@ import { RefreshTokenRepository } from './refreshToken.repository';
 import { MongooseUserModule } from '@/infra/database/mongoose/modules/mongoose-user.module';
 import { AuthService } from './auth.service';
 import { MongooseRefreshTokenModule } from '@/infra/database/mongoose/modules/mongoose-refreshToken.module';
+import { LoginUseCase } from '@/application/useCases/Auth/login/login.usecase';
 
 @Module({
 	imports: [
@@ -34,6 +35,7 @@ import { MongooseRefreshTokenModule } from '@/infra/database/mongoose/modules/mo
 	],
 
 	providers: [
+		AuthService,
 		{
 			provide: Authenticator,
 			useClass: AuthService,
@@ -59,6 +61,21 @@ import { MongooseRefreshTokenModule } from '@/infra/database/mongoose/modules/mo
 				Authenticator,
 				RefreshTokenRepository,
 			],
+		},
+		{
+			provide: LoginUseCase,
+			useFactory(
+				userRepository: UserRepository,
+				authenticator: Authenticator,
+				refreshTokenRepository: RefreshTokenRepository,
+			) {
+				return new LoginUseCase(
+					userRepository,
+					authenticator,
+					refreshTokenRepository,
+				);
+			},
+			inject: [UserRepository, Authenticator, RefreshTokenRepository],
 		},
 	],
 	controllers: [AuthController],

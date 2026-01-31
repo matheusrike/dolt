@@ -8,13 +8,12 @@ export const registerBodySchema = z.object({
 });
 
 export const registerResponseSchema = z.object({
-	// user: z.object({
-	// 	id: z.string(),
-	// 	name: z.string(),
-	// 	email: z.email(),
-	// }),
+	user: z.object({
+		sub: z.string(),
+		name: z.string(),
+		email: z.email(),
+	}),
 	accessToken: z.string(),
-	// refreshToken: z.string(),
 });
 
 export type RegisterBody = z.infer<typeof registerBodySchema>;
@@ -22,13 +21,12 @@ export type RegisterResponse = z.infer<typeof registerResponseSchema>;
 
 // Schemas para Login
 export const loginBodySchema = z.object({
-	email: z.string().email(),
+	email: z.email(),
 	password: z.string().min(6),
 });
 
 export const loginResponseSchema = z.object({
 	accessToken: z.string(),
-	refreshToken: z.string(),
 });
 
 export type LoginBody = z.infer<typeof loginBodySchema>;

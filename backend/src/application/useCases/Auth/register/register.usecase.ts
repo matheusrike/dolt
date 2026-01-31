@@ -49,7 +49,7 @@ export class RegisterUseCase {
 
 		return {
 			user: {
-				id: newUser.Id,
+				sub: newUser.Id,
 				name: newUser.Name,
 				email: newUser.Email,
 			},
