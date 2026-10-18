@@ -3,16 +3,16 @@ CREATE TABLE IF NOT EXISTS "tb_user" (
     "name" VARCHAR(255) NOT NULL,
     "email" VARCHAR(255) NOT NULL UNIQUE,
     "password_hash" VARCHAR(255) NOT NULL,
-    "created_at" timestamptz DEFAULT CURRENT_TIMESTAMP,
+    "created_at" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" timestamptz
     );
 
 CREATE TABLE IF NOT EXISTS "tb_tasklist" (
     "id" uuid PRIMARY KEY,
     "title" varchar(255) NOT NULL,
-    "created_at" timestamptz DEFAULT CURRENT_TIMESTAMP,
+    "created_at" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" timestamptz,
-    "fk_user_id" uuid,
+    "fk_user_id" uuid NOT NULL,
 
     CONSTRAINT "fk_user"
     FOREIGN KEY ("fk_user_id")
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS "tb_task" (
     "is_checked" boolean NOT NULL DEFAULT false,
     "created_at" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" timestamptz,
-    "fk_tasklist_id" uuid,
+    "fk_tasklist_id" uuid NOT NULL,
 
     CONSTRAINT "fk_tasklist"
     FOREIGN KEY ("fk_tasklist_id")
