@@ -5,8 +5,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.jspecify.annotations.Nullable;
-import org.springframework.security.core.GrantedAuthority;
 
 import java.time.OffsetDateTime;
 
@@ -15,7 +13,7 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // Allowed to Hibernate, but vetoed for the application
 @Entity
 @Table(name = "tb_role")
-public class Role implements GrantedAuthority {
+public class Role {
 
     // Database Columns represented by class attributes with JPA annotations
     @Id
@@ -47,9 +45,4 @@ public class Role implements GrantedAuthority {
         this.updatedAt = OffsetDateTime.now();
     }
 
-    // Required by the interface GrantedAuthority (Spring Security)
-    @Override
-    public @Nullable String getAuthority() {
-        return "ROLE_" + this.name.toUpperCase();
-    }
 }
