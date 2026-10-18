@@ -37,6 +37,10 @@ public class User {
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "fk_role_id", nullable = false)
+    private Role role;
+
     // Constructor
     public User(String name, String email, String passwordHash) {
         this.name = name;
